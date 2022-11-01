@@ -24,7 +24,7 @@ function Principal() {
     </View>
   );
 }
-
+//He bryan explicanos bien este pdo porfavor, gracias, domingo 13 14:42 de noviembre llegan los aliens
 function LoginScreen() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
