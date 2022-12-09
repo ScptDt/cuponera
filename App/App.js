@@ -1,29 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-} from "react-native";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { Alert, Text, TextInput, View, TouchableOpacity, } from "react-native";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebase-config";
+import styles from "./estilos";
 import React from "react";
 
-function Principal() {
-  return (
-    <View style={styles.container}>
-      <Text>Cuponera: Principal</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 // He bryan explicanos bien este pdo porfavor, gracias, domingo 13 14:42 de noviembre llegan los aliens
 // Bryan porfa no se que son los metodos genericos
 // Comentario 3
@@ -51,7 +33,7 @@ function LoginScreen() {
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        console.log("Se logeo");
+        console.log("Inicio Sesion");
         const user = userCredential.user;
         console.log(user);
       })
@@ -86,7 +68,7 @@ export default function App() {
   return <LoginScreen />;
 }
 
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
@@ -112,7 +94,7 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 50,
     backgroundColor: "#CDBE78",
-    fontFamily: "arial",
+    fontFamily: "sans",
     fontSize: 32,
     fontWeight: "700",
     fontStyle: "normal",
@@ -121,3 +103,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+*/
+//------------------------------------------------------
+//Este codigo no hace nada
+function Principal() {
+  return (
+    <View style={styles.container}>
+      <Text>Cuponera: Principal</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+//------------------------------------------------------
