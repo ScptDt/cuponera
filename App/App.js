@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Alert, Text, TextInput, View, TouchableOpacity, Image, SafeAreaView, FlatList } from "react-native";
+import { Alert, Text, TextInput, View, TouchableOpacity, Image, Share } from "react-native";
 import { Searchbar, Divider } from 'react-native-paper';
 import Constants from 'expo-constants';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, } from "firebase/auth";
@@ -12,7 +12,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ScrollView } from "react-native-gesture-handler";
 import { AntDesign } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
+import { Feather, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 
 //PANTALLA HOMESCREEN REAL
 function HomeScreen({ navigation }) {
@@ -161,10 +161,10 @@ function TortasScreen({ navigation }) {
       <Divider style={{ margin: 10, }} />
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text style={styles.textote}>Cupones disponibles</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Cupon', { Desc_C: "Obten 2x1 en la torta 'Morbius'", Cad_C: "Valido hasta el 31/04/2023 a las 15:00 horas" })}>
           <Text style={styles.selec_c}>Obten 2x1 en la torta "Morbius"</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Cupon', { Desc_C: "Obten 35% de descuento en el combo 'Morbius'", Cad_C: "Valido hasta el 16/05/2023 a las 18:00 horas" })}>
           <Text style={styles.selec_c}>Obten 35% de descuento en el combo "Morbius"</Text>
         </TouchableOpacity>
       </View>
@@ -189,13 +189,13 @@ function TacosScreen({ navigation }) {
       <Divider style={{ margin: 10, }} />
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text style={styles.textote}>Cupones disponibles</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Cupon')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Cupon', { Desc_C: "Obten 20% de descuento en la parrilla de tacos", Cad_C: "Valido hasta el 15/02/2023 a las 14:00 horas" })}>
           <Text style={styles.selec_c}>Obten 20% de descuento en la parrilla de tacos</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Cupon')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Cupon', { Desc_C: "Obten 2x1 en una orden de tacos", Cad_C: "Valido hasta el 30/05/2023 a las 20:00 horas" })}>
           <Text style={styles.selec_c}>Obten 2x1 en una orden de tacos</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Cupon')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Cupon', { Desc_C: "Obten una bebida gratis al adquirir una orden de tacos", Cad_C: "Valido hasta el 31/12/2022 a las 16:00 horas" })}>
           <Text style={styles.selec_c}>Obten una bebida gratis al adquirir una orden de tacos</Text>
         </TouchableOpacity>
       </View>
@@ -231,52 +231,62 @@ function TostadasScreen({ navigation }) {
   );
 }
 
-function CuponScreen({ navigation }) {
+function CuponScreen({ route, navigation }) {
+  const { Desc_C, Cad_C } = route.params;
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:Desc_C,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <ScrollView>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={styles.textote}>Aqui esta su cupon:</Text>
+        <Text style={styles.textote}>{Desc_C}</Text>
         <Image
-          //Imagen Tacos
           source={{
             uri: 'https://i.ibb.co/d4Ghx75/qr.png',
           }}
           style={{ width: 250, height: 250, borderRadius: 5, margin: 15 }}
         />
 
-        <Text style={styles.descripcion}>Valido hasta el 30/05/2023 a las 20:00 horas</Text>
+        <Text style={styles.descripcion}>{Cad_C}</Text>
       </View>
 
-      <View style={{ alignItems:"center"}}>
-              <Feather name="share" size={46} color="black" />
+      <TouchableOpacity onPress={onShare}>
+        <View style={{ alignItems: "center" }}>
+          <Feather name="share" size={46} color="black" />
+        </View>
+      </TouchableOpacity>
+
+      <View style={{ alignItems: "center", margin: 15, }}>
+        <Text style={styles.encabezado}> Comparte el codigo con tus amigos!</Text>
       </View>
 
-      <View style={{ alignItems:"center", margin:15,}}>
-        <Text style={styles.encabezado}> Comparte el codigo con tus amigos!</Text>  
-      </View>
+      <View style={{ flexDirection: 'row', justifyContent: 'center', }}>
 
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between',  }}>
-        <Image
-          //Logo de la App
-          source={{
-            uri: 'https://i.ibb.co/DCRYn13/image.png',
-          }}
-          style={{ width: 70, height: 70, borderRadius: 70 / 2 }}
-        />
-        <TouchableOpacity>
-          <Image
-            //Perfil
-            source={{
-              uri: 'https://i.ibb.co/B2BcD9S/images.jpg',
-            }}
-            style={{
-              width: 70,
-              height: 70,
-              borderRadius: 70 / 2,
-              alignContent: 'center',
-            }}
-          />
+        <TouchableOpacity style={{ paddingRight: 50 }}>
+          <FontAwesome5 name="facebook" size={46} color="black" />
         </TouchableOpacity>
+
+        <TouchableOpacity style={{ paddingLeft: 50 }}>
+          <FontAwesome name="whatsapp" size={46} color="black" />
+        </TouchableOpacity>
+
       </View>
     </ScrollView>
   );
