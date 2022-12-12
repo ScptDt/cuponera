@@ -35,7 +35,7 @@ export default StyleSheet.create({
     justifyContent: "center",
   },
   btntext: {
-    fontSize:28,
+    fontSize: 28,
     fontWeight: "500",
     color: "#383838",
   },
@@ -51,7 +51,7 @@ export default StyleSheet.create({
     lineHeight: 32,
     margin: 15,
   },
-  encabezado:{
+  encabezado: {
     color: "#383838",
     fontSize: 20,
     fontWeight: "700",
@@ -60,7 +60,7 @@ export default StyleSheet.create({
     paddingTop: 5,
     paddingLeft: 10,
   },
-  descripcion:{
+  descripcion: {
     color: "#383838",
     fontSize: 13,
     fontWeight: "700",
@@ -69,7 +69,7 @@ export default StyleSheet.create({
     paddingLeft: 13,
     marginBottom: 10,
   },
-  descripcion1:{
+  descripcion1: {
     color: "#383838",
     fontSize: 20,
     fontWeight: "700",
@@ -78,15 +78,24 @@ export default StyleSheet.create({
     paddingLeft: 15,
   },
   productodesc: {
-    width: 300, 
-    height: 120, 
+    width: 300,
+    height: 120,
     borderRadius: 10,
   },
   flechita: {
-    alignItems:"flex-end",
+    alignItems: "flex-end",
     paddingRight: 20,
     marginTop: -15,
-    marginBottom: -5 
+    marginBottom: -5
+  },
+  selec_c: {
+    borderWidth: 1,
+    borderColor: '#777',
+    color: '#000000',
+    backgroundColor: "#E5E5E9",
+    lineHeight: 32,
+    margin: 20,
+    padding: 5,
   },
   //Estilos de la webada del bryan
   paragraph: {

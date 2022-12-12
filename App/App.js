@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { Alert, Text, TextInput, View, TouchableOpacity, Image, SafeAreaView, FlatList } from "react-native";
-import { Searchbar, Divider} from 'react-native-paper';
+import { Searchbar, Divider } from 'react-native-paper';
 import Constants from 'expo-constants';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, } from "firebase/auth";
 import { initializeApp } from "firebase/app";
@@ -12,7 +12,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ScrollView } from "react-native-gesture-handler";
 import { AntDesign } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons'; 
+import { Feather } from '@expo/vector-icons';
 
 //PANTALLA HOMESCREEN REAL
 function HomeScreen({ navigation }) {
@@ -46,16 +46,17 @@ function HomeScreen({ navigation }) {
           placeholder="Search"
           onChangeText={(text) => console.log(text)}
           icon="magnify"
-          style={{ margin: 15}}
+          style={{ margin: 15 }}
         />
       </View>
-      <Divider style={{ margin: 5,
-                        width: 5,
-                      }}/>
-      <View style={{ margin: 15}}>
-      <Text style={styles.descripcion1}>Seleccione una opción</Text>
+      <Divider style={{
+        margin: 5,
+        width: 5,
+      }} />
+      <View style={{ margin: 15 }}>
+        <Text style={styles.descripcion1}>Seleccione una opción</Text>
       </View>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',}}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
         <TouchableOpacity onPress={() => navigation.navigate('Tortas')} >
           <View style={styles.productos}>
             <Image
@@ -128,79 +129,6 @@ function HomeScreen({ navigation }) {
   );
 }
 
-//PANTALLA HOME SCREEN DE PRUEBAS
-/*function HomeScreen({ navigation }){
-  const DATA = [
-    {
-      id: 1,
-      nom: 'Tacos Polvo',
-      desc: 'Los mejores tacos de todo Navojoa',
-      uri: 'https://i.ibb.co/pnHCRDV/tacos-polvo.jpg',
-    },
-    {
-      id: 2,
-      nom: 'Tostadas “El Brayan”',
-      desc: 'Tan grandes que no te la acabas!',
-      uri: 'https://i.ibb.co/n00bmmF/image.png',
-    },
-    {
-      id: 3,
-      nom: 'Tortas “Morbius”',
-      desc: "It's tortas time!!!",
-      uri: 'https://i.ibb.co/KLHc2Yk/image.png',
-    },
-  ];
-  const Item = ({nom, desc, uri}) => (
-    <View>
-        <Text style={styles.txt1}>{nom}</Text>
-        <Text style={styles.txt2}>{desc}</Text>
-        <Image
-          source={uri}
-          style={styles.img}
-        />
-    </View>
-  );
-
-  const RItem = ({item}) => <Item nom={item.nom} desc={item.desc} uri={item.uri} />
-
-  return (
-    <View style={styles.container}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Image
-          //Logo de la App
-          source={{
-            uri: 'https://i.ibb.co/DCRYn13/image.png',
-          }}
-          style={{ width: 70, height: 70, borderRadius: 70 / 2 }}
-        />
-        <Image
-          //Perfil
-          source={{
-            uri: 'https://i.ibb.co/B2BcD9S/images.jpg',
-          }}
-          style={{
-            width: 70,
-            height: 70,
-            borderRadius: 70 / 2,
-            alignContent: 'center',
-          }}
-        />
-      </View>
-      <Searchbar
-        placeholder="Search"
-        onChangeText={(text) => console.log(text)}
-        icon="magnify"
-      />
-      <Divider />
-      <Text style={styles.paragraph}>Seleccione una oferta</Text>
-      <SafeAreaView>
-      <FlatList data={DATA} renderItem={RItem} keyExtractor={item => item.id} />
-      </SafeAreaView>
-    </View>
-  );
-
-}*/
-
 function PerfilScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -218,46 +146,88 @@ function PerfilScreen({ navigation }) {
 
 function TortasScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Pantalla de Tortas (Tortas Screen)</Text>
-      <Image
-        //Imagen Torta
-        source={{
-          uri: 'https://i.ibb.co/KLHc2Yk/image.png',
-        }}
-        style={{ width: 250, height: 150 }}
-      />
-    </View>
+    <ScrollView>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Image
+          //Imagen Tortas
+          source={{
+            uri: 'https://i.ibb.co/KLHc2Yk/image.png',
+          }}
+          style={{ width: 250, height: 150, borderRadius: 10, margin: 15 }}
+        />
+        <Text style={styles.textote}>Tortas "Morbius"</Text>
+        <Text style={styles.descripcion}>It's Tortas Time!!!</Text>
+      </View>
+      <Divider style={{ margin: 10, }} />
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={styles.textote}>Cupones disponibles</Text>
+        <TouchableOpacity>
+          <Text style={styles.selec_c}>Obten 2x1 en la torta "Morbius"</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.selec_c}>Obten 35% de descuento en el combo "Morbius"</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 }
 
 function TacosScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Pantalla de Tacos (Tacos Screen)</Text>
-      <Image
-        //Imagen Taco
-        source={{
-          uri: 'https://i.ibb.co/pnHCRDV/tacos-polvo.jpg',
-        }}
-        style={{ width: 250, height: 150 }}
-      />
-    </View>
+    <ScrollView>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Image
+          //Imagen Tacos
+          source={{
+            uri: 'https://i.ibb.co/pnHCRDV/tacos-polvo.jpg',
+          }}
+          style={{ width: 250, height: 150, borderRadius: 10, margin: 15 }}
+        />
+        <Text style={styles.textote}>Tacos Polvo</Text>
+        <Text style={styles.descripcion}>Los mejores tacos de todo Navojoa</Text>
+      </View>
+      <Divider style={{ margin: 10, }} />
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={styles.textote}>Cupones disponibles</Text>
+        <TouchableOpacity>
+          <Text style={styles.selec_c}>Obten 20% de descuento en la parrilla de tacos</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.selec_c}>Obten 2x1 en una orden de tacos</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.selec_c}>Obten una bebida gratis al adquirir una orden de tacos</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 }
 
 function TostadasScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Pantalla de Tostadas (Tostadas Screen)</Text>
-      <Image
-        //Imagen Tostada
-        source={{
-          uri: 'https://i.ibb.co/n00bmmF/image.png',
-        }}
-        style={{ width: 250, height: 150 }}
-      />
-    </View>
+    <ScrollView>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Image
+          //Imagen Tostada
+          source={{
+            uri: 'https://i.ibb.co/n00bmmF/image.png',
+          }}
+          style={{ width: 250, height: 150, borderRadius: 10, margin: 15 }}
+        />
+        <Text style={styles.textote}>Tostadas "El Brayan"</Text>
+        <Text style={styles.descripcion}>Estan tremendas!!!</Text>
+      </View>
+      <Divider style={{ margin: 10, }} />
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={styles.textote}>Cupones disponibles</Text>
+        <TouchableOpacity>
+          <Text style={styles.selec_c}>Obten 35% de descuento en una orden de tostadas</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.selec_c}>Obten una bebida gratis en la compra de 2 tostadas</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 }
 
@@ -315,7 +285,7 @@ function LoginScreen({ navigation }) {
         placeholder="Password"
         secureTextEntry={true}
       />
-      <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.btn}><Text style={styles.btntext}>Inicia Sesión</Text></TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Inicio')} style={styles.btn}><Text style={styles.btntext}>Inicia Sesión</Text></TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')} style={styles.btn}><Text style={styles.btntext}>Registrarse</Text></TouchableOpacity>
       <StatusBar style="auto" />
     </View>
@@ -385,7 +355,7 @@ export default function App() {
       <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} options={{ headerLeft: (props) => null }} />
+        <Stack.Screen name="Inicio" component={HomeScreen} options={{ headerLeft: (props) => null }} />
         <Stack.Screen name="Tortas" component={TortasScreen} />
         <Stack.Screen name="Tacos" component={TacosScreen} />
         <Stack.Screen name="Tostadas" component={TostadasScreen} />
