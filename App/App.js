@@ -189,13 +189,13 @@ function TacosScreen({ navigation }) {
       <Divider style={{ margin: 10, }} />
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text style={styles.textote}>Cupones disponibles</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Cupon')}>
           <Text style={styles.selec_c}>Obten 20% de descuento en la parrilla de tacos</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Cupon')}>
           <Text style={styles.selec_c}>Obten 2x1 en una orden de tacos</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Cupon')}>
           <Text style={styles.selec_c}>Obten una bebida gratis al adquirir una orden de tacos</Text>
         </TouchableOpacity>
       </View>
@@ -225,6 +225,57 @@ function TostadasScreen({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity>
           <Text style={styles.selec_c}>Obten una bebida gratis en la compra de 2 tostadas</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
+  );
+}
+
+function CuponScreen({ navigation }) {
+  return (
+    <ScrollView>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={styles.textote}>Aqui esta su cupon:</Text>
+        <Image
+          //Imagen Tacos
+          source={{
+            uri: 'https://i.ibb.co/d4Ghx75/qr.png',
+          }}
+          style={{ width: 250, height: 250, borderRadius: 5, margin: 15 }}
+        />
+
+        <Text style={styles.descripcion}>Valido hasta el 30/05/2023 a las 20:00 horas</Text>
+      </View>
+
+      <View style={{ alignItems:"center"}}>
+              <Feather name="share" size={46} color="black" />
+      </View>
+
+      <View style={{ alignItems:"center", margin:15,}}>
+        <Text style={styles.encabezado}> Comparte el codigo con tus amigos!</Text>  
+      </View>
+
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between',  }}>
+        <Image
+          //Logo de la App
+          source={{
+            uri: 'https://i.ibb.co/DCRYn13/image.png',
+          }}
+          style={{ width: 70, height: 70, borderRadius: 70 / 2 }}
+        />
+        <TouchableOpacity>
+          <Image
+            //Perfil
+            source={{
+              uri: 'https://i.ibb.co/B2BcD9S/images.jpg',
+            }}
+            style={{
+              width: 70,
+              height: 70,
+              borderRadius: 70 / 2,
+              alignContent: 'center',
+            }}
+          />
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -360,6 +411,7 @@ export default function App() {
         <Stack.Screen name="Tacos" component={TacosScreen} />
         <Stack.Screen name="Tostadas" component={TostadasScreen} />
         <Stack.Screen name="Perfil" component={PerfilScreen} />
+        <Stack.Screen name="Cupon" component={CuponScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
