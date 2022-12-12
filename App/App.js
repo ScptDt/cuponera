@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { Alert, Text, TextInput, View, TouchableOpacity, Image, SafeAreaView, FlatList } from "react-native";
-import { Searchbar, Divider } from 'react-native-paper';
+import { Searchbar, Divider} from 'react-native-paper';
 import Constants from 'expo-constants';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, } from "firebase/auth";
 import { initializeApp } from "firebase/app";
@@ -11,6 +11,8 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { ScrollView } from "react-native-gesture-handler";
+import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons'; 
 
 //PANTALLA HOMESCREEN REAL
 function HomeScreen({ navigation }) {
@@ -44,11 +46,16 @@ function HomeScreen({ navigation }) {
           placeholder="Search"
           onChangeText={(text) => console.log(text)}
           icon="magnify"
-          style={{ margin: 5}}
+          style={{ margin: 15}}
         />
       </View>
-      <Divider style={{ margin: 10}}/>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Divider style={{ margin: 5,
+                        width: 5,
+                      }}/>
+      <View style={{ margin: 15}}>
+      <Text style={styles.descripcion1}>Seleccione una opción</Text>
+      </View>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',}}>
         <TouchableOpacity onPress={() => navigation.navigate('Tortas')} >
           <View style={styles.productos}>
             <Image
@@ -56,9 +63,12 @@ function HomeScreen({ navigation }) {
               source={{
                 uri: 'https://i.ibb.co/KLHc2Yk/image.png',
               }}
-              style={{ width: 250, height: 150, borderRadius: 10, }}
+              style={styles.productodesc}
             />
             <Text style={styles.encabezado}>Tortas "Morbius"</Text>
+            <View style={styles.flechita}>
+              <Feather name="arrow-right" size={24} color="black" />
+            </View>
             <Text style={styles.descripcion}>It's Tortas Time!!!</Text>
           </View>
         </TouchableOpacity>
@@ -70,9 +80,12 @@ function HomeScreen({ navigation }) {
               source={{
                 uri: 'https://i.ibb.co/pnHCRDV/tacos-polvo.jpg',
               }}
-              style={{ width: 250, height: 150, borderRadius: 10, }}
+              style={styles.productodesc}
             />
-            <Text style={styles.encabezado}>Tacos Polvo"</Text>
+            <Text style={styles.encabezado}>Tacos "Polvo"</Text>
+            <View style={styles.flechita}>
+              <Feather name="arrow-right" size={24} color="black" />
+            </View>
             <Text style={styles.descripcion}>Los mejores tacos de todo Navojoa</Text>
           </View>
         </TouchableOpacity>
@@ -84,12 +97,16 @@ function HomeScreen({ navigation }) {
               source={{
                 uri: 'https://i.ibb.co/n00bmmF/image.png',
               }}
-              style={{ width: 250, height: 150, borderRadius: 10, }}
+              style={styles.productodesc}
             />
             <Text style={styles.encabezado}>Tostadas “El Brayan”</Text>
+            <View style={styles.flechita}>
+              <Feather name="arrow-right" size={24} color="black" />
+            </View>
             <Text style={styles.descripcion}>Estan tremendas!!</Text>
           </View>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={() => navigation.navigate('Tostadas')} >
           <View style={styles.productos}>
             <Image
@@ -97,9 +114,12 @@ function HomeScreen({ navigation }) {
               source={{
                 uri: 'https://i.ibb.co/n00bmmF/image.png',
               }}
-              style={{ width: 250, height: 150, borderRadius: 10, }}
+              style={styles.productodesc}
             />
             <Text style={styles.encabezado}>Tostadas “El Brayan 2”</Text>
+            <View style={styles.flechita}>
+              <Feather name="arrow-right" size={24} color="black" />
+            </View>
             <Text style={styles.descripcion}>Tan tremendas como las primeras!!</Text>
           </View>
         </TouchableOpacity>
@@ -295,8 +315,8 @@ function LoginScreen({ navigation }) {
         placeholder="Password"
         secureTextEntry={true}
       />
-      <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.btn}><Text>Login</Text></TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('SignUp')} style={styles.btn}><Text>Registrarse</Text></TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.btn}><Text style={styles.btntext}>Inicia Sesión</Text></TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('SignUp')} style={styles.btn}><Text style={styles.btntext}>Registrarse</Text></TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );
