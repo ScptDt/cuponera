@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { Alert, Text, TextInput, View, TouchableOpacity, Image } from "react-native";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebase-config";
 import styles from "../estilos";
@@ -14,29 +14,17 @@ const Login = ({ navigation }) => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
   
-    const handleCreateAccount = () => {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          console.log("Se creo la cuenta");
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          console.log(error);
-          Alert.alert(error.message);
-        });
-    };
-  
     const handleSignIn = () => {
       signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
+        .then((userCredential) => {
           console.log("Inicio Sesion");
           const user = userCredential.user;
           console.log(user);
+          navigation.navigate("Inicio");
         })
         .catch((error) => {
           console.log(error);
-          Alert.alert(error.message);
+          Alert.alert("El correo o la contraseña es incorrecta, favor de usar los indicados.");
         });
     };
   
@@ -61,7 +49,7 @@ const Login = ({ navigation }) => {
           placeholder="Password"
           secureTextEntry={true}
         />
-        <TouchableOpacity onPress={() => navigation.navigate('Inicio')} style={styles.btn}><Text style={styles.btntext}>Inicia Sesión</Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => handleSignIn()} style={styles.btn}><Text style={styles.btntext}>Inicia Sesión</Text></TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('SignUp')} style={styles.btn}><Text style={styles.btntext}>Registrarse</Text></TouchableOpacity>
         <StatusBar style="auto" />
       </View>

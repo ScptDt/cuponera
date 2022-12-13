@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { Alert, Text, TextInput, View, TouchableOpacity, Image, Share } from "react-native";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebase-config";
 import styles from "../estilos";
@@ -16,7 +16,7 @@ const SignUp = ({ navigation }) => {
   
     const handleCreateAccount = () => {
       createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
+        .then((userCredential) => {
           console.log("Se creo la cuenta");
           const user = userCredential.user;
           console.log(user);
@@ -26,19 +26,6 @@ const SignUp = ({ navigation }) => {
           console.log(error);
           Alert.alert(error.message);
           navigation.goBack();
-        });
-    };
-  
-    const handleSignIn = () => {
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          console.log("Inicio Sesion");
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          console.log(error);
-          Alert.alert(error.message);
         });
     };
   
