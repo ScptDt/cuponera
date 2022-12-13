@@ -20,7 +20,7 @@ const Perfil = ({ navigation }) => {
         <View style={{ marginRight: 15 }}>
           <Text style={styles.textote}>Guerrero03</Text>
           <TouchableOpacity style={{ flexDirection: 'row' }}>
-            <Text style={[styles.descripcion, { color: 'blue', textDecorationLine: 'underline', marginRight: 5, fontSize: 20 }]}>Editar cuenta</Text>
+            <Text style={[styles.descripcion, { color: '#066163', textDecorationLine: 'underline', marginRight: 5, fontSize: 20 }]}>Editar cuenta</Text>
             <FontAwesome name="pencil-square" size={24} color="black" />
           </TouchableOpacity>
         </View>
@@ -34,15 +34,15 @@ const Perfil = ({ navigation }) => {
       </View>
       <Divider />
       <View>
-        <View style={[styles.selec_c, { borderRadius: 10 }]}>
+        <View style={[styles.selec_p, { borderRadius: 10}]}>
           <Text style={[styles.descripcion, { fontSize: 16 }]}>Nombre de Usuario</Text>
           <Text style={styles.descripcion}>Guerrero03</Text>
         </View>
-        <View style={[styles.selec_c, { borderRadius: 10 }]}>
+        <View style={[styles.selec_p, { borderRadius: 10 }]}>
           <Text style={[styles.descripcion, { fontSize: 16 }]}>Correo electronico</Text>
           <Text style={styles.descripcion}>guerrero03@gmail.com</Text>
         </View>
-        <View style={[styles.selec_c, { borderRadius: 10 }]}>
+        <View style={[styles.selec_p, { borderRadius: 10 }]}>
           <Text style={[styles.descripcion, { fontSize: 16 }]}>Contraseña</Text>
           <Text style={styles.descripcion}>****************</Text>
         </View>
@@ -51,7 +51,7 @@ const Perfil = ({ navigation }) => {
         <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => {
           toggleAlert();
         }}>
-          <Text style={[styles.descripcion, { color: 'red', textDecorationLine: 'underline', marginRight: 5, fontSize: 20 }]}>Eliminar cuenta</Text>
+          <Text style={[styles.descripcion, { color: '#E14646', textDecorationLine: 'underline', marginRight: 5, fontSize: 20 }]}>Eliminar cuenta</Text>
           <FontAwesome name="trash-o" size={24} color="black" />
         </TouchableOpacity>
       </View>
