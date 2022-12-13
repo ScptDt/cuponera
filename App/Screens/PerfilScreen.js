@@ -44,7 +44,7 @@ const Perfil = ({ navigation }) => {
         </View>
         <View style={[styles.selec_c, { borderRadius: 10 }]}>
           <Text style={[styles.descripcion, { fontSize: 16 }]}>Contraseña</Text>
-          <Text style={styles.descripcion}>*****************</Text>
+          <Text style={styles.descripcion}>****************</Text>
         </View>
       </View>
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', margin: 15 }}>
