@@ -22,10 +22,10 @@ const Tostadas = ({ navigation }) => {
             <Divider style={{ margin: 10, }} />
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={styles.textote}>Cupones disponibles</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Cupon', { Desc_C: "Obten 35% de descuento en una orden de tostadas", Cad_C: "Valido hasta el 15/04/2023 a las 13:00 horas" })}>
                     <Text style={styles.selec_c}>Obten 35% de descuento en una orden de tostadas</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Cupon', { Desc_C: "Obten una bebida gratis en la compra de 2 tostadas", Cad_C: "Valido hasta el 15/04/2023 a las 15:00 horas" })}>
                     <Text style={styles.selec_c}>Obten una bebida gratis en la compra de 2 tostadas</Text>
                 </TouchableOpacity>
             </View>
