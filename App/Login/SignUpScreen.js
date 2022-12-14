@@ -6,6 +6,8 @@ import { firebaseConfig } from "../firebase-config";
 import styles from "../estilos";
 import React from "react";
 import 'react-native-gesture-handler';
+import { AntDesign } from '@expo/vector-icons';
+import { Feather, FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 
 const SignUp = ({ navigation }) => {
     const [email, setEmail] = React.useState("");
