@@ -139,7 +139,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-end', 
     alignItems: 'center', 
     marginTop: 600, 
-    paddingBottom: 45,
+    paddingBottom: 65,
     borderWidth: 1,
     borderColor: '#F2F2F2',
     borderTopLeftRadius:35,
