@@ -89,7 +89,7 @@ export default StyleSheet.create({
     fontStyle: "normal",
     textAlign: "left",
     paddingLeft: 15,
-    marginTop:5,
+    marginTop: 5,
     fontSize: 18,
   },
   productodesc: {
@@ -128,10 +128,22 @@ export default StyleSheet.create({
     padding: 5,
   },
   img_select: {
-    width: 325, 
-    height: 175, 
-    borderRadius: 20, 
+    width: 325,
+    height: 175,
+    borderRadius: 20,
     margin: 15
+  },
+  Start: {
+    backgroundColor: '#F2F2F2', 
+    flex: 1, 
+    justifyContent: 'flex-end', 
+    alignItems: 'center', 
+    marginTop: 600, 
+    paddingBottom: 45,
+    borderWidth: 1,
+    borderColor: '#F2F2F2',
+    borderTopLeftRadius:35,
+    borderTopRightRadius:35,
   },
   //Estilos de la webada del bryan
   paragraph: {
@@ -147,7 +159,6 @@ export default StyleSheet.create({
     borderRadius: 500,
     alignSelf: 'center',
   },
-
   txt1: {
     fontSize: 20,
     backgroundColor: '#B7A969',

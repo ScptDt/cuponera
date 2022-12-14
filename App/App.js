@@ -23,16 +23,18 @@ import Tostadas from "./Screens/TostadasScreen";
 import Perfil from "./Screens/PerfilScreen";
 import Login from "./Login/LoginScreen";
 import SignUp from "./Login/SignUpScreen";
+import Start from "./Login/StartScreen";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Login'>
+      <Stack.Navigator initialRouteName='Start'>
+        <Stack.Screen name="Start" component={Start} options={{headerShown: false}} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="Inicio" component={Home} options={{ headerLeft: (props) => null }} />
+        <Stack.Screen name="Inicio" component={Home} options={{ headerLeft: null }} />
         <Stack.Screen name="Tortas" component={Tortas} />
         <Stack.Screen name="Tacos" component={Tacos} />
         <Stack.Screen name="Tostadas" component={Tostadas} />

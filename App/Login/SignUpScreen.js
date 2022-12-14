@@ -25,7 +25,6 @@ const SignUp = ({ navigation }) => {
         .catch((error) => {
           console.log(error);
           Alert.alert(error.message);
-          navigation.goBack();
         });
     };
   
