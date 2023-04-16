@@ -11,12 +11,19 @@ const Start = ({ navigation }) => {
                     <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.btn}>
                         <Text style={styles.btntext}>Inicia Sesion</Text>
                     </TouchableOpacity>
-
+                    
 
                     <View style={{ flexDirection: 'row', marginTop:35 }}>
                         <Text style={[styles.descripcion, { fontSize: 20 }]}>Todavía no tienes cuenta?</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('SignUp')} >
                             <Text style={[styles.descripcion, { color: '#066163', textDecorationLine: 'underline', marginRight: 5, fontSize: 20 }]}>Registrate</Text>
+                        </TouchableOpacity>
+                    </View>
+                    
+                    <View style={{ flexDirection: 'row'}}>
+                        <Text style={[styles.descripcion, { fontSize: 20 }]}>Inicio de Sesion Empresa</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('InicioEmpresa')} >
+                            <Text style={[styles.descripcion, { color: '#066163', textDecorationLine: 'underline', marginRight: 5, fontSize: 20 }]}>Home</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

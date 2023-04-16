@@ -7,7 +7,7 @@ import { Feather } from '@expo/vector-icons';
 import styles from '../estilos.js';
 import ConfirmationAlert from "./Alerta.js";
 
-const Home = ({ navigation }) => {
+const HomeEmpresa = ({ navigation }) => {
   const [timesPressed, setTimesPressed] = useState(0);
   const [alertVisible, setAlertVisible] = useState(false);
 
@@ -60,11 +60,142 @@ const Home = ({ navigation }) => {
         margin: 5,
         width: 5,
       }} />
+
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Image
+          //Imagen Tortas
+          source={{
+            uri: "https://i.ibb.co/KLHc2Yk/image.png",
+          }}
+          style={styles.img_select}
+        />
+        <Text style={styles.textote}>Tortas "Morbius"</Text>
+        <Text style={[styles.descripcion, { fontSize: 16 }]}>
+          It's Tortas Time!!!
+        </Text>
+      </View>
+      <Divider style={{ margin: 10 }} />
+      <View style={{ flex: 1}}>
+        <Text style={styles.textotent}>Cupones Activos</Text>
+        <View
+          style={[
+            styles.selec_c,
+            {
+              borderRadius: 10,
+            },
+          ]}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("CuponEmp", {
+                Desc_C: "Obten 2x1 en la torta 'Morbius'",
+                Cad_C: "Valido hasta el 31/04/2023 a las 15:00 horas",
+              })
+            }
+          >
+            <Text style={styles.descripcion2}>
+              Obten 2x1 en la torta "Morbius"
+            </Text>
+            <View style={styles.flechita_select}>
+              <Feather name="arrow-right" size={24} color="black" />
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View
+          style={[
+            styles.selec_c,
+            {
+              borderRadius: 10,
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          ]}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("CuponEmp", {
+                Desc_C: "Obten 35% de descuento en el combo 'Morbius'",
+                Cad_C: "Valido hasta el 16/05/2023 a las 18:00 horas",
+              })
+            }
+          >
+            <Text style={styles.descripcion2}>
+              Obten 35% de descuento en el combo "Morbius"
+            </Text>
+            <View style={styles.flechita_select}>
+              <Feather name="arrow-right" size={24} color="black" />
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <ConfirmationAlert
+        title="Easter Egg"
+        message="ඞ"
+        visible={alertVisible}
+        buttons={[
+          {
+            text: "Continuar", onPress: () => {
+              toggleAlert();
+            }
+          },
+        ]}
+      />
+    </ScrollView>
+  );
+}
+
+export default HomeEmpresa;
+
+/*
+<ScrollView>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <TouchableOpacity onPress={() => { setTimesPressed((current) => current + 1); }}>
+          <Image
+            //Logo de la App
+            source={{
+              uri: 'https://i.ibb.co/DCRYn13/image.png',
+            }}
+            style={{ width: 70, height: 70, borderRadius: 70 / 2 }}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={[styles.descripcion1, { paddingTop: 20 }]}>
+            NOMBRE DE LA EMPRESA
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Perfil')} >
+          <Image
+            //Perfil
+            source={{
+              uri: 'https://i.ibb.co/B2BcD9S/images.jpg',
+            }}
+            style={{
+              width: 70,
+              height: 70,
+              borderRadius: 70 / 2,
+              alignContent: 'center',
+            }}
+          />
+        </TouchableOpacity>
+      </View>
+      <View>
+        <Searchbar
+          placeholder="Search"
+          onChangeText={(text) => console.log(text)}
+          icon="magnify"
+          style={{ margin: 15 }}
+        />
+      </View>
+      <Divider style={{
+        margin: 5,
+        width: 5,
+      }} />
       <View style={{ margin: 15 }}>
-        <Text style={styles.descripcion1}>Seleccione una opción</Text>
+        <Text style={styles.descripcion1}>Desayunos</Text>
       </View>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
-        <TouchableOpacity onPress={() => navigation.navigate('Tortas')} >
+        <TouchableOpacity onPress={() => navigation.navigate('TortasEmp')} >
           <View style={styles.productos}>
             <Image
               //Imagen Torta
@@ -81,7 +212,7 @@ const Home = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Tacos')} >
+        <TouchableOpacity onPress={() => navigation.navigate('TacosEmp')} >
           <View style={styles.productos}>
             <Image
               //Imagen Taco
@@ -98,7 +229,10 @@ const Home = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Tostadas')} >
+        <View style={{ margin: 15 }}>
+          <Text style={styles.descripcion1}>Postres</Text>
+        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('TostadasEmp')} >
           <View style={styles.productos}>
             <Image
               //Imagen Tostada
@@ -115,7 +249,7 @@ const Home = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate('Tostadas')} >
+        <TouchableOpacity onPress={() => navigation.navigate('TostadasEmp')} >
           <View style={styles.productos}>
             <Image
               //Imagen Tostada
@@ -148,7 +282,4 @@ const Home = ({ navigation }) => {
       />
 
     </ScrollView>
-  );
-}
-
-export default Home;
+    */
