@@ -53,13 +53,35 @@ const HomeEmpresa = ({ navigation }) => {
           placeholder="Search"
           onChangeText={(text) => console.log(text)}
           icon="magnify"
-          style={{ margin: 15 }}
+          style={{ margin: 1 }}
         />
       </View>
       <Divider style={{
         margin: 5,
         width: 5,
       }} />
+
+      <View
+      style={[
+            styles.selec_c,
+            {
+              borderRadius: 10,
+              justifyContent: "center",
+            },
+          ]}>
+      <TouchableOpacity //Boton para agregar nuevo cupon
+            onPress={() =>
+              navigation.navigate("Agregar")
+            }
+          >
+            <Text style={styles.descripcion2}>
+              Agregar un Cupon
+            </Text>
+            <View style={styles.flechita_select}>
+              <Feather name="arrow-right" size={24} color="black" />
+            </View>
+          </TouchableOpacity>
+      </View>
 
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Image
@@ -106,7 +128,6 @@ const HomeEmpresa = ({ navigation }) => {
             styles.selec_c,
             {
               borderRadius: 10,
-              alignItems: "center",
               justifyContent: "center",
             },
           ]}

@@ -1,4 +1,4 @@
-import { Text, TextInput, View, TouchableOpacity, Image, Share } from "react-native";
+import { Text, View, TouchableOpacity, Image } from "react-native";
 import styles from "../estilos";
 import React, { useState } from "react";
 import 'react-native-gesture-handler';
@@ -14,37 +14,8 @@ const CuponEmp = ({ route, navigation }) => {
         setAlertVisible(!alertVisible);
     }
 
-    const onShare = async () => {
-        try {
-            const result = await Share.share({
-                message: Desc_C,
-            });
-            if (result.action === Share.sharedAction) {
-                if (result.activityType) {
-                    // shared with activity type of result.activityType
-                } else {
-                    // shared
-                }
-            } else if (result.action === Share.dismissedAction) {
-                // dismissed
-            }
-        } catch (error) {
-            alert(error.message);
-        }
-    };
-
     return (
         <ScrollView>
-            
-            <View style={{ flex: 1 }}>
-                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() =>
-              navigation.navigate("Editar", {Desc_C, Cad_C})
-            }>
-                    <Text style={[styles.descripcion, { color: '#066163', textDecorationLine: 'underline', marginRight: 5, fontSize: 20 }]}>Editar Cupon</Text>
-                    <FontAwesome name="pencil-square" size={24} color="black" />
-                </TouchableOpacity>
-            </View>
-
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
                 <Text style={styles.textote}>{Desc_C}</Text>
@@ -59,6 +30,15 @@ const CuponEmp = ({ route, navigation }) => {
             </View>
 
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 15 }}>
+
+            <View style={{ flex: 1 }}>
+                <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() =>
+              navigation.navigate("Editar", {Desc_C, Cad_C})
+            }>
+                    <Text style={[styles.descripcion, { color: '#066163', textDecorationLine: 'underline', marginRight: 5, fontSize: 20 }]}>Editar Cupon</Text>
+                    <FontAwesome name="pencil-square" size={24} color="black" />
+                </TouchableOpacity>
+            </View>
 
                 <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => {
                     toggleAlert();

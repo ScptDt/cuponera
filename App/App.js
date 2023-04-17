@@ -27,6 +27,7 @@ import Login from "./Login/LoginScreen";
 import SignUp from "./Login/SignUpScreen";
 import Start from "./Login/StartScreen";
 import EditarCupon from "./Screens/EditarCupon";
+import AgregarCupon from "./Screens/AgregarCupon";
 
 
 const Stack = createStackNavigator();
@@ -47,6 +48,7 @@ export default function App() {
         <Stack.Screen name="Cupon" component={Cupon} />
         <Stack.Screen name="CuponEmp" component={CuponEmp} />
         <Stack.Screen name="Editar" component={EditarCupon} />
+        <Stack.Screen name="Agregar" component={AgregarCupon} />
       </Stack.Navigator>
     </NavigationContainer>
   );

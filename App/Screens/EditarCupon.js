@@ -15,25 +15,6 @@ const EditarCupon = ({ route, navigation }) => {
         setAlertVisible(!alertVisible);
     }
 
-    const onShare = async () => {
-        try {
-            const result = await Share.share({
-                message: Desc_C,
-            });
-            if (result.action === Share.sharedAction) {
-                if (result.activityType) {
-                    // shared with activity type of result.activityType
-                } else {
-                    // shared
-                }
-            } else if (result.action === Share.dismissedAction) {
-                // dismissed
-            }
-        } catch (error) {
-            alert(error.message);
-        }
-    };
-
     return (
         <ScrollView>
             <View style={{ flex: 1, justifyContent: 'center' }}>
